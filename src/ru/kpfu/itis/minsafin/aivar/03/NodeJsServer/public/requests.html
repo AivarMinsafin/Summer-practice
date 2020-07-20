@@ -14,7 +14,7 @@
         $.getJSON("/users", function (response) {
             let html = "";
             for (let i = 0; i < response.length; i++) {
-                html += "<div class='user' style='margin: 10px; background-color: honeydew'>";
+                html += "<div class='user' style='margin: 10px; background-color: honeydew; padding: 5px'>";
                 html += "<p>" + "Имя: " + response[i]["name"] + "</p>";
                 html += "<p>" + "Возраст: " + response[i]["age"] + "</p>";
                 html += "<p>" + "ID: "+ response[i]["id"] + "</p>";

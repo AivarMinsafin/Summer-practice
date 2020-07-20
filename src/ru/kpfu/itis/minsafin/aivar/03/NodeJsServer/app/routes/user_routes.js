@@ -9,6 +9,7 @@ const connectionData = {
 
 
 module.exports = function (app) {
+    //About me
     app.get('/profile', (request, response) => {
         let result = [
             {
@@ -21,6 +22,7 @@ module.exports = function (app) {
         response.send(JSON.stringify(result));
     });
 
+
     app.post('/profile', bodyParser, (request, response) => {
         let body = request.body;
         console.log(body["name"]);
@@ -32,7 +34,8 @@ module.exports = function (app) {
         response.send(JSON.stringify(responseBody));
     })
 
-    app.post('/user', bodyParser, (request, response) => {
+    //Route for render User's information
+    app.post('/user_render', bodyParser, (request, response) => {
         let body = request.body;
         console.log(body.user.name);
         console.log(body.user.age);
@@ -51,6 +54,8 @@ module.exports = function (app) {
         });
     });
 
+
+    //Getting users list
     app.get('/users', (request, response) => {
         client = new Client(connectionData);
         client.connect();
@@ -62,6 +67,32 @@ module.exports = function (app) {
             }
             response.setHeader("Content-type", "application/json");
             response.json(res.rows);
+        });
+    });
+
+    //Just API route
+    app.post('/user', bodyParser, (request, response) => {
+        let body = request.body;
+        console.log(body.user.name);
+        console.log(body.user.age);
+        let id = 'undefined';
+        client = new Client(connectionData);
+        client.connect();
+        client.query("INSERT INTO users(name, age) VALUES ($1, $2) RETURNING id;", [body.user.name, body.user.age], (err, res) =>{
+            if (err){
+                console.log(err.stack);
+            } else {
+                id = res.rows[0]["id"];
+                console.log(id);
+                console.log("INFO: user are added")
+            }
+            let result = {
+                "name": body.user.name,
+                "age": body.user.age,
+                "id": parseInt(id)
+            }
+            response.setHeader("Content-type", "application/json");
+            response.json(result);
         });
     });
 }
