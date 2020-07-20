@@ -1,0 +1,22 @@
+GET http://localhost:8012/profile
+
+###
+
+POST http://localhost:8012/profile
+Content-Type: application/json
+
+{
+ "name": "Test"
+}
+
+###
+
+POST http://localhost:8012/user
+Content-Type: application/json
+
+{
+  "user": {
+    "name": "Aivar",
+    "age": 19
+  }
+}

@@ -10,9 +10,12 @@
     <div class="back">
         <div class="container" style="text-align: center;" >
             <h3>Можете отправить заявку!</h3>
-            <form action="request.html">
-                <p><textarea name="req" id="" cols="50" rows="10"></textarea></p>
-                <p><input type="submit" value="Отправить"></p>
+            <form action="/user" method="post">
+                <label for="newName">Как к вам обращаться?</label>
+                <p><input id="newName" type="text" name="user[name]"></p>
+                <label for="newAge">Ваш возраст?</label>
+                <p><input id="newAge" type="number" name="user[age]"></p>
+                <p><input type="submit" value="Отправить" onclick=""></p>
             </form>
             <p>
                 <a href="index.html" class="btn btn-primary">На главную</a>
