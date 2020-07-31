@@ -15,7 +15,7 @@ module.exports = function (app) {
             {
                 "name": "Айвар",
                 "age": 19,
-                "description": "Тут должно быть описание, но я пока не придумал."
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vulputate fringilla rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus malesuada in elit sit amet hendrerit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tristique, metus at auctor pretium, nisl sapien tempor metus, eu aliquam leo urna et eros. In arcu felis, fermentum quis enim maximus, commodo semper lacus. Maecenas eu lectus dictum justo vulputate faucibus nec sed mi. "
             }
         ];
         response.setHeader("Content-type", "application/json");
